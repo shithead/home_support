@@ -5,7 +5,7 @@ SSHUSER="player"
 SSHDCMD="`which sshd`"
 SSHDPORT=""
 SSHDKEYFILE="${HOME}/.ssh/support-$(hostname)-$(whoami)"
-SSHDPIDFILE="/var/run/${SSHDKEYFILE}.pid"
+SSHDPIDFILE="/var/run/sshd-$(hostname)-$(whoami).pid"
 
 AUTHORIZEDKEYFILE="${HOME}/.ssh/authorized_key"
 
