@@ -14,7 +14,10 @@ SUPPORTERSSHDPORT=""
 # the public key needs the word supporterkey in the comment.
 export SUPPORTERPUBLICKEY=" supporterkey"
 
-. support.conf
+if [ -x support.conf ]
+then
+	. support.conf
+fi
 
 create_keyfile () {
 	SSHKEYGENCMD="`which ssh-keygen`"
