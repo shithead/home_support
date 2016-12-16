@@ -14,7 +14,7 @@ SUPPORTERSSHDPORT=""
 # the public key needs the word supporterkey in the comment.
 export SUPPORTERPUBLICKEY=" supporterkey"
 
-if [ -x support.conf ]
+if [ -e support.conf ]
 then
 	. support.conf
 fi
@@ -45,14 +45,15 @@ establish_tunnel () {
 }
 
 main () {
-	if [ ! -x ${SSHDKEYFILE} ]
+	if [ ! -e ${SSHDKEYFILE} ]
 	then
 		echo -e "Create Keyfile"
 		create_keyfile
 		echo -e "Send the public key to your supporter."
 		return
 	fi
-	if [ ! grep -q supporterkey ${AUTHORIZEDKEYFILE} ]
+	grep -q supporterkey ${AUTHORIZEDKEYFILE}
+	if [ 0 -ne $? ]
 	then
 		echo -e "Authoriz Supporter"
 		authoriz_supporter
@@ -61,5 +62,8 @@ main () {
 	establish_tunnel
 }
 
-main()
-stop_sshd
+main
+if [ -e ${SSHDPIDFILE} ]
+then
+	stop_sshd
+fi
