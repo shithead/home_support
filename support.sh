@@ -40,7 +40,7 @@ stop_sshd () {
 }
 
 establish_tunnel () {
-	${SSHCMD} -R ${SSHREMOTEPORT}:localhost:${SSHDPORT} -i ${SSHDKEYFILE}  ${SSHUSER}@${SUPPORTERADDR} -p${SUPPORTERSSHDPORT}
+	${SSHCMD} -N -R ${SSHREMOTEPORT}:localhost:${SSHDPORT} -i ${SSHDKEYFILE}  ${SSHUSER}@${SUPPORTERADDR} -p${SUPPORTERSSHDPORT}
 }
 
 main () {
