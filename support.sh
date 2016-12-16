@@ -35,7 +35,8 @@ start_sshd () {
 }
 
 stop_sshd () {
-	 cat ${SSHDPIDFILE} | kill -n 9
+	 kill -n 9 $(cat ${SSHDPIDFILE})
+	 rm ${SSHDPIDFILE}
 }
 
 establish_tunnel () {
