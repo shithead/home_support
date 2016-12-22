@@ -1,16 +1,16 @@
 
 SSHCMD="`which ssh`"
-SSHREMOTEPORT=""
 SSHUSER="player"
 SSHDCMD="`which sshd`"
-SSHDPORT=""
 SSHDKEYFILE="${HOME}/.ssh/support-$(hostname)-$(whoami)"
 SSHDPIDFILE="/var/run/sshd-$(hostname)-$(whoami).pid"
 
 AUTHORIZEDKEYFILE="${HOME}/.ssh/authorized_key"
 
+SSHDPORT=""
 SUPPORTERADDR=""
 SUPPORTERSSHDPORT=""
+SUPPORTERREMOTEPORT=""
 # the public key needs the word supporterkey in the comment.
 export SUPPORTERPUBLICKEY=" supporterkey"
 
@@ -40,7 +40,7 @@ stop_sshd () {
 }
 
 establish_tunnel () {
-	${SSHCMD} -N -R ${SSHREMOTEPORT}:localhost:${SSHDPORT} -i ${SSHDKEYFILE}  ${SSHUSER}@${SUPPORTERADDR} -p${SUPPORTERSSHDPORT}
+	${SSHCMD} -N -R ${SUPPORTERREMOTEPORT}:localhost:${SSHDPORT} -i ${SSHDKEYFILE}  ${SSHUSER}@${SUPPORTERADDR} -p${SUPPORTERSSHDPORT}
 }
 
 main () {
