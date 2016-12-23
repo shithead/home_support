@@ -27,7 +27,7 @@ create_keyfile () {
 
 authoriz_supporter () {
 	sudo 	mkdir ${HOME}/.ssh 2>/dev/null; \
-		echo -e ${SUPPORTERPUBLICKEY} >> ${HOME}/.ssh/authorized_key
+		echo ${SUPPORTERPUBLICKEY} >> ${HOME}/.ssh/authorized_key
 }
 
 start_sshd () {
