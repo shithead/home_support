@@ -31,7 +31,7 @@ authoriz_supporter () {
 }
 
 start_sshd () {
-	${SSHDCMD} -o "Port ${SSHDPORT}" -o "PidFile ${SSHDPIDFILE}" -o "PermitRootLogin yes"
+	${SSHDCMD} -o "Port ${SSHDPORT}" -o "PidFile ${SSHDPIDFILE}" -o "PermitRootLogin without-password"
 }
 
 stop_sshd () {
