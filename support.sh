@@ -5,7 +5,7 @@ SSHDCMD="`which sshd`"
 SSHDKEYFILE="${HOME}/.ssh/support-$(hostname)-$(whoami)"
 SSHDPIDFILE="/var/run/sshd-$(hostname)-$(whoami).pid"
 
-AUTHORIZEDKEYFILE="${HOME}/.ssh/authorized_key"
+AUTHORIZEDKEYFILE="${HOME}/.ssh/authorized_keys"
 
 SSHDPORT=""
 SUPPORTERADDR=""
