@@ -26,8 +26,8 @@ create_keyfile () {
 }
 
 authoriz_supporter () {
-	sudo 	mkdir ${HOME}/.ssh 2>/dev/null; \
-		echo ${SUPPORTERPUBLICKEY} >> ${HOME}/.ssh/authorized_keys
+	mkdir ${HOME}/.ssh 2>/dev/null;
+	echo ${SUPPORTERPUBLICKEY} >> ${HOME}/.ssh/authorized_keys;
 }
 
 start_sshd () {
@@ -36,7 +36,7 @@ start_sshd () {
 		-o "PidFile ${SSHDPIDFILE}" \
 		-o "PermitRootLogin without-password" \
 		-o "PasswordAuthentication no" \
-                -o "AllowUsers root"
+                -o "AllowUsers `whoami`"
 }
 
 stop_sshd () {
