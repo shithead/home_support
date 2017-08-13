@@ -1,0 +1,5 @@
+#! /bin/sh
+
+sudo su -c  '/usr/local/bin/support.sh'
+echo -e press any key
+read
